@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { Loader } from '../components';
-// import { Island } from "../models";
-import Island from '../models/Island';
+import { Sky, Island } from '../models';
 
 const Home = () => {
+  const [isRotating, setIsRotating] = useState(false);
+
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
 
@@ -47,8 +48,10 @@ const Home = () => {
             groundColor="#000000"
             intensity={1}
           />
+          <Sky isRotating={isRotating}/>
 
           <Island
+            isRotating={isRotating}
             position={islandPosition}
             rotation={[0.1, 4.7077, 0]}
             scale={islandScale}
