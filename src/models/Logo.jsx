@@ -17,8 +17,8 @@ export function Logo ({...props}) {
     }
   });
   return (
-    <a.group ref={logoRef} rotation={[0, 0, 0]} {...props}>
-      <group rotation={[-Math.PI / 256, 0, 0]}>
+    <a.group ref={logoRef} {...props}>
+      <group rotation={[-Math.PI / -256, 0, 0]}>
         <primitive object={nodes._rootJoint} />
         <mesh
           geometry={nodes.Object_247.geometry}
