@@ -11,11 +11,11 @@ const Home = () => {
     let screenScale, screenPosition;
 
     if (window.innerWidth < 768) {
-      screenScale = [0.9, 0.9, 0.9];
-      screenPosition = [0, -6.5, -43.4];
+      screenScale = [0.15, 0.15, 0.15];
+      screenPosition = [0, 0, -50];
     } else {
-      screenScale = [1, 1, 1];
-      screenPosition = [0, -6.5, -43.4];
+      screenScale = [0.22, 0.22, 0.22];
+      screenPosition = [-10, 0, -30];
     }
 
     return [screenScale, screenPosition];
@@ -55,9 +55,9 @@ const Home = () => {
           />
 
           <Island
-            isRotating={isRotating}
+            // isRotating={isRotating}
             position={islandPosition}
-            rotation={[0.1, 4.7077, 0]}
+            rotation={[0, 0, 0]}
             scale={islandScale}
           />
         </Suspense>
