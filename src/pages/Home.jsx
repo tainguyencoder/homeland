@@ -2,7 +2,7 @@
 import { Canvas } from '@react-three/fiber';
 import { Suspense, useState } from 'react';
 import { Loader } from '../components';
-import { Sky, Island } from '../models';
+import { Sky, Island, Bird } from '../models';
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
@@ -48,6 +48,7 @@ const Home = () => {
             groundColor="#000000"
             intensity={1}
           />
+          <Bird />
           <Sky
             // isRotating={isRotating}
             rotationSpeed={0.001}
