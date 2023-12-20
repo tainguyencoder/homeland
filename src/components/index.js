@@ -3,9 +3,11 @@
 import Navbar from "./Navbar";
 import Loader from "./Loader";
 import Footer from "./Footer";
+import HomeInfo from "./HomeInfo";
 
 export {
     Navbar,
     Loader,
-    Footer
+    Footer,
+    HomeInfo
 }

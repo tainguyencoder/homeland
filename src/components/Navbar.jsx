@@ -40,7 +40,7 @@ const Navbar = () => {
           </Suspense>
         </Canvas>
       </section>
-      <nav className="flex text-lg gap-7 font-medium">
+      {/* <nav className="flex text-lg gap-7 font-medium">
         <NavLink
           to="/about"
           className={({ isActive }) =>
@@ -57,7 +57,7 @@ const Navbar = () => {
         >
           PROJECTS
         </NavLink>
-      </nav>
+      </nav> */}
     </header>
   );
 };
