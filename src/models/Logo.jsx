@@ -13,7 +13,7 @@ export function Logo ({...props}) {
   useFrame(() => {
     // Rotate the logo around the vertical axis
     if (logoRef.current) {
-      logoRef.current.rotation.y += props.rotationSpeed || 0;
+      logoRef.current.rotation.y += -props.rotationSpeed || 0;
     }
   });
   return (
