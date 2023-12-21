@@ -64,7 +64,7 @@ export function Island({
       lastX.current = clientX;
 
       // Update the rotation speed
-      rotationSpeed.current = delta * 0.05 * Math.PI;
+      rotationSpeed.current = delta * 0.01 * Math.PI;
     }
   };
 

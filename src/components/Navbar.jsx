@@ -5,24 +5,29 @@ import { Logo } from '../models';
 
 const Navbar = () => {
   const adjustLogoForScreenSize = () => {
-    let screenScale;
+    let screenScale, screenPosition;
 
     if (window.innerWidth <= 365) {
-      screenScale = [1.6, 1.6, 1.6];
+      screenScale = [1, 1, 1];
+      screenPosition = [-4, 0, 0.5];
     } else if (window.innerWidth <= 640) {
-      screenScale = [1.8, 1.8, 1.8];
+      screenScale = [1.7, 1.7, 1.7];
+      screenPosition = [-4, 0.5, 0.5];
     } else if (window.innerWidth <= 768) {
-      screenScale = [2.2, 2.2, 2.2];
+      screenScale = [2.3, 2.3, 2.3];
+      screenPosition = [-3, -2.5, 0.5];
     } else if (window.innerWidth <= 1024) {
       screenScale = [2.6, 2.6, 2.6];
+      screenPosition = [-3, -2.5, 0.5];
     } else {
       screenScale = [3, 3, 3];
+      screenPosition = [-3, -2.5, 0.5];
     }
 
-    return screenScale;
+    return [screenScale, screenPosition];
   };
 
-  const logoScale = adjustLogoForScreenSize();
+  const [logoScale, logoPosition] = adjustLogoForScreenSize();
   return (
     <header className="header">
       <NavLink to="/">
@@ -46,7 +51,7 @@ const Navbar = () => {
               <Logo
                 rotationSpeed={0.01}
                 scale={logoScale}
-                position={[-3, -2.5, 0.5]}
+                position={logoPosition}
               />
             </Suspense>
           </Canvas>
