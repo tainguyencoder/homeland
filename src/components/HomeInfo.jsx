@@ -3,50 +3,26 @@ import { Link } from 'react-router-dom';
 import { arrow } from '../assets/icons';
 
 const HomeInfo = ({ currentStage }) => {
-  // if (currentStage === 1) {
-  //   return (
-  //     <div className="info-box">
-  //       <p className="font-medium sm:text-xl text-center">
-  //         Hi, I'm
-  //         <span className="font-semibold mx-2 text-white">Taikool</span>
-  //         👋
-  //         <br />
-  //         A Front-end Developer from Vietnam 🇻🇳
-  //         <br />
-  //       </p>
-
-  //       <Link
-  //         to="https://taithanhnguyen.tech/"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //         className="neo-brutalism-white neo-btn"
-  //       >
-  //         Visit my portfolio
-  //         <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
-  //       </Link>
-  //     </div>
-  //   );
-  // }
-  if (currentStage === 1)
-    return (
-      <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5">
-        Hi, I'm
-        <span className="font-semibold mx-2 text-white">Adrian</span>
-        👋
-        <br />A Software Engineer from Croatia 🇭🇷
-      </h1>
-    );
-
+  if (currentStage === 1) return null;
   if (currentStage === 2) {
     return (
       <div className="info-box">
         <p className="font-medium sm:text-xl text-center">
-          Worked with many companies <br /> and picked up many skills along the
-          way
+          Hi, I'm
+          <span className="font-semibold mx-2 text-white">Taikool</span>
+          👋
+          <br />
+          A Front-end Developer from Vietnam 🇻🇳
+          <br />
         </p>
 
-        <Link to="/about" className="neo-brutalism-white neo-btn">
-          Learn more
+        <Link
+          to="https://taithanhnguyen.tech/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="neo-brutalism-white neo-btn"
+        >
+          Visit my portfolio
           <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
         </Link>
       </div>
@@ -56,13 +32,18 @@ const HomeInfo = ({ currentStage }) => {
   if (currentStage === 3) {
     return (
       <div className="info-box">
-        <p className="font-medium text-center sm:text-xl">
-          Led multiple projects to success over the years. <br /> Curious about
-          the impact?
+        <p className="font-medium sm:text-xl text-center">
+          Explore all of my personal projects <br />
+          It might make you feel intrigued
         </p>
 
-        <Link to="/projects" className="neo-brutalism-white neo-btn">
-          Visit my portfolio
+        <Link
+          to="https://grafbase-flexibble-j7ce5o39s-taikool2121996.vercel.app/profile/user_01H5Q8ETQ67PGAMB2HENQJQMH1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="neo-brutalism-white neo-btn"
+        >
+          Learn more
           <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
         </Link>
       </div>
@@ -72,12 +53,33 @@ const HomeInfo = ({ currentStage }) => {
   if (currentStage === 4) {
     return (
       <div className="info-box">
-        <p className="font-medium sm:text-xl text-center">
-          Need a project done or looking for a dev? <br /> I'm just a few
-          keystrokes away
+        <p className="font-medium text-center sm:text-xl">
+          Feel like talking more with me ? <br />
+          Connect with me !!!
         </p>
 
         <Link to="/contact" className="neo-brutalism-white neo-btn">
+        Get in contact
+          <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
+        </Link>
+      </div>
+    );
+  }
+
+  if (currentStage === 5) {
+    return (
+      <div className="info-box">
+        <p className="font-medium sm:text-xl text-center">
+          Want me building stuff for you ?
+          <br /> Hit me on LinkedIn
+        </p>
+
+        <Link
+          to="https://www.linkedin.com/in/taithanhnguyen210396/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="neo-brutalism-white neo-btn"
+        >
           Let's talk
           <img src={arrow} alt="arrow" className="w-4 h-4 object-contain" />
         </Link>
