@@ -5,21 +5,20 @@ import { Loader, HomeInfo } from '../components';
 import { Sky, Island, Bird, Dragon } from '../models';
 
 const Home = () => {
-
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
 
   const adjustDragonForScreenSize = () => {
     let screenScale, screenPosition;
 
-    // If screen width is less than 768px, adjust the scale and position
     if (window.innerWidth < 768) {
       screenScale = [19, 19, 19];
-      screenPosition = [0, -2, -4];
+      screenPosition = [0, -1.5, 0];
     } else {
-      screenScale = [24, 24, 24];
-      screenPosition = [1, -1, -2];
+      screenScale = [29, 29, 29];
+      screenPosition = [0, -2, -4];
     }
+
 
     return [screenScale, screenPosition];
   };
@@ -27,12 +26,21 @@ const Home = () => {
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
 
-    if (window.innerWidth < 768) {
+    if (window.innerWidth <= 365) {
       screenScale = [0.6, 0.6, 0.6];
-      screenPosition = [-40, -10, -180];
+      screenPosition = [0, -6.5, -43.4];
+    } else if (window.innerWidth <= 640) {
+      screenScale = [0.7, 0.7, 0.7];
+      screenPosition = [0, -6.5, -43.4];
+    } else if (window.innerWidth <= 768) {
+      screenScale = [0.7, 0.7, 0.7];
+      screenPosition = [0, -6.5, -43.4];
+    } else if (window.innerWidth <= 1024) {
+      screenScale = [0.8, 0.8, 0.8];
+      screenPosition = [0, -6.5, -43.4];
     } else {
-      screenScale = [1.1, 1.1, 1.1];
-      screenPosition = [-30, -10, -180];
+      screenScale = [1.05, 1.05, 1.05];
+      screenPosition = [0, -6.5, -43.4];
     }
 
     return [screenScale, screenPosition];
@@ -42,15 +50,14 @@ const Home = () => {
   const [islandScale, islandPosition] = adjustIslandForScreenSize();
   return (
     <section className="w-full h-screen relative">
-      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
+      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
 
       <Canvas
         className={`w-full h-screen bg-transparent ${
-          isRotating ? "cursor-grabbing" : "cursor-grab"
+          isRotating ? 'cursor-grabbing' : 'cursor-grab'
         }`}
-
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
@@ -68,7 +75,9 @@ const Home = () => {
             groundColor="#000000"
             intensity={1}
           />
+
           <Bird />
+
           <Sky
             isRotating={isRotating}
             rotationSpeed={0.001}

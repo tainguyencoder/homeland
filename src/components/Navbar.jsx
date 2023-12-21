@@ -7,8 +7,14 @@ const Navbar = () => {
   const adjustLogoForScreenSize = () => {
     let screenScale;
 
-    if (window.innerWidth < 768) {
-      screenScale = [1.5, 1.5, 1.5];
+    if (window.innerWidth <= 365) {
+      screenScale = [1.6, 1.6, 1.6];
+    } else if (window.innerWidth <= 640) {
+      screenScale = [1.8, 1.8, 1.8];
+    } else if (window.innerWidth <= 768) {
+      screenScale = [2.2, 2.2, 2.2];
+    } else if (window.innerWidth <= 1024) {
+      screenScale = [2.6, 2.6, 2.6];
     } else {
       screenScale = [3, 3, 3];
     }

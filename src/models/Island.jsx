@@ -13,6 +13,7 @@ export function Island({
   ...props
 }) {
   const islandRef = useRef();
+
   // Get access to the Three.js renderer and viewport
   const { gl, viewport } = useThree();
   const { nodes, materials } = useGLTF(islandScene);
@@ -124,22 +125,6 @@ export function Island({
       // When rotating, determine the current stage based on island's orientation
       const rotation = islandRef.current.rotation.y;
 
-      /**
-       * Normalize the rotation value to ensure it stays within the range [0, 2 * Math.PI].
-       * The goal is to ensure that the rotation value remains within a specific range to
-       * prevent potential issues with very large or negative rotation values.
-       *  Here's a step-by-step explanation of what this code does:
-       *  1. rotation % (2 * Math.PI) calculates the remainder of the rotation value when divided
-       *     by 2 * Math.PI. This essentially wraps the rotation value around once it reaches a
-       *     full circle (360 degrees) so that it stays within the range of 0 to 2 * Math.PI.
-       *  2. (rotation % (2 * Math.PI)) + 2 * Math.PI adds 2 * Math.PI to the result from step 1.
-       *     This is done to ensure that the value remains positive and within the range of
-       *     0 to 2 * Math.PI even if it was negative after the modulo operation in step 1.
-       *  3. Finally, ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI) applies another
-       *     modulo operation to the value obtained in step 2. This step guarantees that the value
-       *     always stays within the range of 0 to 2 * Math.PI, which is equivalent to a full
-       *     circle in radians.
-       */
       const normalizedRotation =
         ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
 
@@ -148,10 +133,13 @@ export function Island({
         case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
           setCurrentStage(4);
           break;
+        case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
+          setCurrentStage(3);
+          break;
         case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
           setCurrentStage(2);
           break;
-        case normalizedRotation >= 4.7 && normalizedRotation <= 5:
+        case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
           setCurrentStage(1);
           break;
         default:
@@ -159,201 +147,35 @@ export function Island({
       }
     }
   });
-
-
-  // useFrame(({ clock }) => {
-  //   if (!isRotating) {
-  //     const elapsedTime = clock.getElapsedTime();
-  //     const rotationY = elapsedTime * 0;
-
-  //     islandRef.current.rotation.set(0, rotationY, 0);
-
-  //     // Normalize the rotation value
-  //     const normalizedRotation =
-  //       ((rotationY % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
-
-  //     // Tính toán currentStage dựa trên góc xoay
-  //     switch (true) {
-  //       case normalizedRotation >= 0 && normalizedRotation < (2 * Math.PI) / 3:
-  //         setCurrentStage(1);
-  //         break;
-  //       case normalizedRotation >= (2 * Math.PI) / 3 && normalizedRotation < (4 * Math.PI) / 3:
-  //         setCurrentStage(2);
-  //         break;
-  //       case normalizedRotation >= (4 * Math.PI) / 3 && normalizedRotation < (2 * Math.PI):
-  //         setCurrentStage(3);
-  //         break;
-  //       default:
-  //         setCurrentStage(null);
-  //     }
-  //   }
-  // });
-
   return (
     <a.group ref={islandRef} {...props}>
       <mesh
-        geometry={nodes.Final_Bridge1_SF_Bridge_Mat001_0.geometry}
-        material={materials['SF_Bridge_Mat.001']}
+        geometry={nodes.polySurface944_tree_body_0.geometry}
+        material={materials.PaletteMaterial001}
       />
       <mesh
-        geometry={nodes.Final_Bridge1_SF_Roof_Final_0.geometry}
-        material={materials.SF_Roof_Final}
+        geometry={nodes.polySurface945_tree1_0.geometry}
+        material={materials.PaletteMaterial001}
       />
       <mesh
-        geometry={nodes.Final_Bridge1_SF_Roof_Final_0_1.geometry}
-        material={materials.SF_Roof_Final}
+        geometry={nodes.polySurface946_tree2_0.geometry}
+        material={materials.PaletteMaterial001}
       />
       <mesh
-        geometry={nodes.Final_Bridge1_SF_Roof_Final_0_2.geometry}
-        material={materials.SF_Roof_Final}
+        geometry={nodes.polySurface947_tree1_0.geometry}
+        material={materials.PaletteMaterial001}
       />
       <mesh
-        geometry={nodes.Final_Bridge1_SF_Roof_Final_0_3.geometry}
-        material={materials.SF_Roof_Final}
+        geometry={nodes.polySurface948_tree_body_0.geometry}
+        material={materials.PaletteMaterial001}
       />
       <mesh
-        geometry={nodes.Final_Bridge1_SF_Rocks_Mat_0.geometry}
-        material={materials.SF_Rocks_Mat}
+        geometry={nodes.polySurface949_tree_body_0.geometry}
+        material={materials.PaletteMaterial001}
       />
       <mesh
-        geometry={nodes.Final_Bridge1_SF_Windows_Mat_0.geometry}
-        material={materials.SF_Windows_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Windows_Mat_0_1.geometry}
-        material={materials.SF_Windows_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Windows_Mat_0_2.geometry}
-        material={materials.SF_Windows_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Bush_Mat_0.geometry}
-        material={materials.SF_Bush_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_TreeWood_Mat_0.geometry}
-        material={materials.SF_TreeWood_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_TreeWood_Mat_0_1.geometry}
-        material={materials.SF_TreeWood_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_TreeLeaf_Mat_0.geometry}
-        material={materials.SF_TreeLeaf_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_HouseSupport_Mat_0.geometry}
-        material={materials.SF_HouseSupport_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_HouseJoins_Mat_0.geometry}
-        material={materials.SF_HouseJoins_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Chimney_Mat_0.geometry}
-        material={materials.SF_Chimney_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_CutRock_Mat_0.geometry}
-        material={materials.SF_CutRock_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Stalagmites_Mat_0.geometry}
-        material={materials.SF_Stalagmites_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_WoodTex_Mat_0.geometry}
-        material={materials.SF_WoodTex_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_PlasterTex_Mat_0.geometry}
-        material={materials.SF_PlasterTex_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_StoneBrick_Mat_0.geometry}
-        material={materials.SF_StoneBrick_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Island_Mat_0.geometry}
-        material={materials.SF_Island_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_LampGlass_Mat_0.geometry}
-        material={materials.SF_LampGlass_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Lamp_Mat_0.geometry}
-        material={materials.SF_Lamp_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Candle_Mat_0.geometry}
-        material={materials.SF_Candle_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Grass_Mat_0.geometry}
-        material={materials.SF_Grass_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Rail_Mat_0.geometry}
-        material={materials.SF_Rail_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_GrassCards_Mat_0.geometry}
-        material={materials.SF_GrassCards_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_GrassCards_Mat_0_1.geometry}
-        material={materials.SF_GrassCards_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_GrassCards_Mat_0_2.geometry}
-        material={materials.SF_GrassCards_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_GrassCards_Mat_0_3.geometry}
-        material={materials.SF_GrassCards_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Sack_Mat_0.geometry}
-        material={materials.SF_Sack_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_MineCart_Mat_0.geometry}
-        material={materials.SF_MineCart_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Bridge_Mat_0.geometry}
-        material={materials.SF_Bridge_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Door_Mat_0.geometry}
-        material={materials.SF_Door_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Water_Mat_0.geometry}
-        material={materials.SF_Water_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_Final_Water001_0.geometry}
-        material={materials['Final_Water.001']}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_Final_Rocks2_Mat_0.geometry}
-        material={materials.Final_Rocks2_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_Black_0.geometry}
-        material={materials.Black}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_ButterFly_Mat_0.geometry}
-        material={materials.SF_ButterFly_Mat}
-      />
-      <mesh
-        geometry={nodes.Final_Bridge1_SF_Lillypad_Mat_0.geometry}
-        material={materials.SF_Lillypad_Mat}
+        geometry={nodes.pCube11_rocks1_0.geometry}
+        material={materials.PaletteMaterial001}
       />
     </a.group>
   );
