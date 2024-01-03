@@ -27,20 +27,20 @@ const Home = () => {
     let screenScale, screenPosition;
 
     if (window.innerWidth <= 365) {
-      screenScale = [0.6, 0.6, 0.6];
-      screenPosition = [0, -6.5, -43.4];
+      screenScale = [0.02, 0.02, 0.02];
+      screenPosition = [-2, -18.5, -35.4];
     } else if (window.innerWidth <= 640) {
-      screenScale = [0.7, 0.7, 0.7];
-      screenPosition = [0, -6.5, -43.4];
+      screenScale = [0.03, 0.03, 0.03];
+      screenPosition = [-2, -22.5, -35.4];
     } else if (window.innerWidth <= 768) {
-      screenScale = [0.7, 0.7, 0.7];
-      screenPosition = [0, -6.5, -43.4];
+      screenScale = [0.035, 0.035, 0.035];
+      screenPosition = [-2, -24, -35.4];
     } else if (window.innerWidth <= 1024) {
-      screenScale = [0.8, 0.8, 0.8];
-      screenPosition = [0, -6.5, -43.4];
+      screenScale = [0.04, 0.04, 0.04];
+      screenPosition = [-2, -25.5, -35.4];
     } else {
-      screenScale = [1.05, 1.05, 1.05];
-      screenPosition = [0, -6.5, -43.4];
+      screenScale = [0.04, 0.04, 0.04];
+      screenPosition = [-2, -25.5, -35.4];
     }
 
     return [screenScale, screenPosition];
@@ -89,7 +89,7 @@ const Home = () => {
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
             position={islandPosition}
-            rotation={[0.2, 5, 0]}
+            rotation={[0, 5.2, 0]}
             scale={islandScale}
           />
           <Dragon
