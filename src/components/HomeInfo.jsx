@@ -17,7 +17,7 @@ const HomeInfo = ({ currentStage }) => {
         </p>
 
         <Link
-          to="https://taithanhnguyen.tech/"
+          to="https://taikool.cloud/"
           target="_blank"
           rel="noopener noreferrer"
           className="neo-brutalism-white neo-btn"
