@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useRef, useState, useEffect } from 'react';
 
 import { Fox } from "../models";
 import useAlert from '../hooks/useAlert';
@@ -70,6 +70,10 @@ const Contact = () => {
         }
       );
   };
+
+  useEffect(() => {
+    document.title = 'Contact';
+  }, []);
 
 
   return (

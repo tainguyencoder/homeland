@@ -4,11 +4,11 @@ export const socialLinks = [
   {
     name: 'GitHub',
     iconUrl: github,
-    link: 'https://github.com/taikool2121996',
+    link: 'https://github.com/tainguyencoder',
   },
   {
     name: 'LinkedIn',
     iconUrl: linkedin,
-    link: 'https://www.linkedin.com/in/taithanhnguyen210396',
+    link: 'https://www.linkedin.com/in/tainguyencoder',
   },
 ];

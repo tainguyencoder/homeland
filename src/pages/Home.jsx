@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { Loader, HomeInfo } from '../components';
 import { Sky, Island, Bird, Dragon } from '../models';
 
@@ -48,6 +48,11 @@ const Home = () => {
 
   const [dragonScale, dragonPosition] = adjustDragonForScreenSize();
   const [islandScale, islandPosition] = adjustIslandForScreenSize();
+
+  useEffect(() => {
+    document.title = 'Homeland';
+  }, []);
+
   return (
     <section className="w-full h-screen relative">
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">

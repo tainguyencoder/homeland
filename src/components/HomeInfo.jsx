@@ -9,7 +9,7 @@ const HomeInfo = ({ currentStage }) => {
       <div className="info-box">
         <p className="font-medium sm:text-xl text-center">
           Hi, I'm
-          <span className="font-semibold mx-2 text-white">Taikool</span>
+          <span className="font-semibold mx-2 text-white">Tai Nguyen</span>
           👋
           <br />
           A Front-end Developer from Vietnam 🇻🇳
@@ -17,7 +17,7 @@ const HomeInfo = ({ currentStage }) => {
         </p>
 
         <Link
-          to="https://taikool.cloud/"
+          to="https://tainguyencoder.tech/"
           target="_blank"
           rel="noopener noreferrer"
           className="neo-brutalism-white neo-btn"
@@ -38,7 +38,7 @@ const HomeInfo = ({ currentStage }) => {
         </p>
 
         <Link
-          to="https://grafbase-flexibble-j7ce5o39s-taikool2121996.vercel.app/profile/user_01H5Q8ETQ67PGAMB2HENQJQMH1"
+          to="https://github.com/tainguyencoder?tab=repositories"
           target="_blank"
           rel="noopener noreferrer"
           className="neo-brutalism-white neo-btn"
