@@ -1,29 +1,29 @@
-import emailjs from "@emailjs/browser";
+import emailjs from '@emailjs/browser';
 import { Canvas } from '@react-three/fiber';
 import { Suspense, useRef, useState, useEffect } from 'react';
 
-import { Fox } from "../models";
+import { Fox } from '../models';
 import useAlert from '../hooks/useAlert';
 import { Alert, Loader } from '../components';
 
 const Contact = () => {
   const formRef = useRef();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
-  const [currentAnimation, setCurrentAnimation] = useState("idle");
+  const [currentAnimation, setCurrentAnimation] = useState('idle');
 
   const handleChange = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleFocus = () => setCurrentAnimation("walk");
-  const handleBlur = () => setCurrentAnimation("idle");
+  const handleFocus = () => setCurrentAnimation('walk');
+  const handleBlur = () => setCurrentAnimation('idle');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    setCurrentAnimation("hit");
+    setCurrentAnimation('hit');
 
     emailjs
       .send(
@@ -31,43 +31,43 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
-          to_name: "Taikool2121996",
+          to_name: 'Taikool2121996',
           from_email: form.email,
-          to_email: "taikool2121996@gmail.com",
+          to_email: 'taikool2121996@gmail.com',
           message: form.message,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
       )
       .then(
         () => {
           setLoading(false);
           showAlert({
             show: true,
-            text: "Thank you for your message 😃",
-            type: "success",
+            text: 'Thank you for your message 😃',
+            type: 'success',
           });
 
           setTimeout(() => {
             hideAlert(false);
-            setCurrentAnimation("idle");
+            setCurrentAnimation('idle');
             setForm({
-              name: "",
-              email: "",
-              message: "",
+              name: '',
+              email: '',
+              message: '',
             });
           }, [3000]);
         },
         (error) => {
           setLoading(false);
           console.error(error);
-          setCurrentAnimation("idle");
+          setCurrentAnimation('idle');
 
           showAlert({
             show: true,
             text: "I didn't receive your message 😢",
-            type: "danger",
+            type: 'danger',
           });
-        }
+        },
       );
   };
 
@@ -75,26 +75,25 @@ const Contact = () => {
     document.title = 'Contact';
   }, []);
 
-
   return (
-<section className='relative flex lg:flex-row flex-col max-container'>
+    <section className="relative flex lg:flex-row flex-col max-container">
       {alert.show && <Alert {...alert} />}
 
-      <div className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text'>Shoot Me an Email</h1>
+      <div className="flex-1 min-w-[50%] flex flex-col">
+        <h1 className="head-text">Shoot Me an Email</h1>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className='w-full flex flex-col gap-7 mt-14'
+          className="w-full flex flex-col gap-7 mt-14"
         >
-          <label className='text-black-500 font-semibold'>
+          <label className="text-black-500 font-semibold">
             Name
             <input
-              type='text'
-              name='name'
-              className='input'
-              placeholder='Taikool'
+              type="text"
+              name="name"
+              className="input"
+              placeholder="Taikool"
               required
               value={form.name}
               onChange={handleChange}
@@ -102,13 +101,13 @@ const Contact = () => {
               onBlur={handleBlur}
             />
           </label>
-          <label className='text-black-500 font-semibold'>
+          <label className="text-black-500 font-semibold">
             Email
             <input
-              type='email'
-              name='email'
-              className='input'
-              placeholder='taikool2121996@gmail.com'
+              type="email"
+              name="email"
+              className="input"
+              placeholder="taikool2121996@gmail.com"
               required
               value={form.email}
               onChange={handleChange}
@@ -116,13 +115,13 @@ const Contact = () => {
               onBlur={handleBlur}
             />
           </label>
-          <label className='text-black-500 font-semibold'>
+          <label className="text-black-500 font-semibold">
             Your Message
             <textarea
-              name='message'
-              rows='4'
-              className='textarea'
-              placeholder='Want me building stuff for you ?'
+              name="message"
+              rows="4"
+              className="textarea"
+              placeholder="Want me building stuff for you ?"
               value={form.message}
               onChange={handleChange}
               onFocus={handleFocus}
@@ -131,18 +130,18 @@ const Contact = () => {
           </label>
 
           <button
-            type='submit'
+            type="submit"
             disabled={loading}
-            className='btn'
+            className="btn"
             onFocus={handleFocus}
             onBlur={handleBlur}
           >
-            {loading ? "Sending..." : "Hit me on email"}
+            {loading ? 'Sending...' : 'Hit me on email'}
           </button>
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
+      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]">
         <Canvas
           camera={{
             position: [0, 0, 5],
